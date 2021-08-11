@@ -1,26 +1,36 @@
 import React, { Component } from "react";
-import { Image, StyleSheet, Button } from "react-native";
+import { Image, StyleSheet, Button, View, Text } from "react-native";
 import { Header } from "react-native-elements";
 import { NavigationContainer } from "@react-navigation/native";
-import { createDrawerNavigator, DrawerItem } from "@react-navigation/drawer";
+import { createDrawerNavigator } from "@react-navigation/drawer";
 import { createStackNavigator } from "@react-navigation/stack";
 import { MaterialIcons } from "@expo/vector-icons";
+import AppLoading from "expo-app-loading";
+import {
+  useFonts,
+  Montserrat_400Regular,
+  Montserrat_600SemiBold,
+} from "@expo-google-fonts/montserrat";
 
 import ProfilePage from "./ProfilePage";
 import TasksPage from "./TasksPage";
 import ChatboxPage from "./ChatboxPage";
 import HouseholdPage from "./HouseholdPage";
 import SettingsPage from "./SettingsPage";
+import CustomDrawer from "./CustomDrawer";
 
 const Drawer = createDrawerNavigator();
 
+// drawer navigator screens
 function MyDrawer() {
   return (
     <Drawer.Navigator
       drawerStyle={{ backgroundColor: "#e5e5e5" }}
+      drawerContent={(props) => <CustomDrawer {...props} />}
       drawerContentOptions={{
+        inactiveTintColor: "black",
         itemStyle: { marginVertical: 15 },
-        labelStyle: { fontSize: 15 },
+        labelStyle: { fontSize: 20, fontFamily: "Montserrat_400Regular" },
       }}
     >
       <Drawer.Screen
@@ -52,7 +62,10 @@ function MyDrawer() {
         component={ChatboxNavigator}
         options={{
           drawerIcon: () => (
-            <Image source={require("../assets/chat.png")} style={styles.chatIcon} />
+            <Image
+              source={require("../assets/chat.png")}
+              style={styles.chatIcon}
+            />
           ),
         }}
       />
@@ -88,23 +101,32 @@ const styles = StyleSheet.create({
   icon: {
     width: 40,
     height: 40,
-    marginLeft: 15,
+    marginLeft: "6%",
   },
-  chatIcon: { width: 40, height: 37, marginLeft: 15 },
+  chatIcon: { width: 40, height: 37, marginLeft: "6%" },
   menuIcon: {
     marginLeft: 20,
   },
 });
 
 export default function MenuPage() {
-  return (
-    <NavigationContainer>
-      <MyDrawer />
-    </NavigationContainer>
-  );
+  let [fontsLoaded] = useFonts({
+    Montserrat_400Regular,
+    Montserrat_600SemiBold,
+  });
+
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  } else {
+    return (
+      <NavigationContainer>
+        <MyDrawer />
+      </NavigationContainer>
+    );
+  }
 }
 
-// stack navigators
+// stack navigator screens
 const ProfileStack = createStackNavigator();
 
 function ProfileNavigator() {
@@ -115,6 +137,10 @@ function ProfileNavigator() {
         component={ProfilePage}
         options={({ navigation }) => ({
           title: "Profile",
+          headerTitleStyle: {
+            fontFamily: "Montserrat_600SemiBold",
+            fontSize: 20,
+          },
           headerLeft: () => (
             <MaterialIcons
               style={styles.menuIcon}
@@ -148,6 +174,10 @@ function TasksNavigator() {
         component={TasksPage}
         options={({ navigation }) => ({
           title: "Tasks",
+          headerTitleStyle: {
+            fontFamily: "Montserrat_600SemiBold",
+            fontSize: 20,
+          },
           headerLeft: () => (
             <MaterialIcons
               style={styles.menuIcon}
@@ -181,6 +211,10 @@ function ChatboxNavigator() {
         component={ChatboxPage}
         options={({ navigation }) => ({
           title: "Chatbox",
+          headerTitleStyle: {
+            fontFamily: "Montserrat_600SemiBold",
+            fontSize: 20,
+          },
           headerLeft: () => (
             <MaterialIcons
               style={styles.menuIcon}
@@ -214,6 +248,10 @@ function HouseholdNavigator() {
         component={HouseholdPage}
         options={({ navigation }) => ({
           title: "Household",
+          headerTitleStyle: {
+            fontFamily: "Montserrat_600SemiBold",
+            fontSize: 20,
+          },
           headerLeft: () => (
             <MaterialIcons
               style={styles.menuIcon}
@@ -247,6 +285,10 @@ function SettingsNavigator() {
         component={SettingsPage}
         options={({ navigation }) => ({
           title: "Settings",
+          headerTitleStyle: {
+            fontFamily: "Montserrat_600SemiBold",
+            fontSize: 20,
+          },
           headerLeft: () => (
             <MaterialIcons
               style={styles.menuIcon}
