@@ -27,12 +27,10 @@ import HouseholdPage from "./HouseholdPage";
 function Changehouse({navigation}){
   navigation = useNavigation();
   return (
-    <View style={{ alignItems: 'center', justifyContent: 'center', position:'absolute' }}>
-      <Button
-        title="Change Household"
-        color="black"
-        onPress={() => navigation.navigate('Household')}
-      />
+    <View style={{ alignItems: 'center', justifyContent: 'center' }}>
+      <TouchableOpacity onPress={() => navigation.navigate('Household')}>
+        <Text style={{fontSize:20, fontFamily:"Montserrat_500medium"}}>Change Household</Text>
+              </TouchableOpacity>
     </View>
   )
 }
@@ -159,13 +157,8 @@ export class SettingsPage extends React.Component {
           </View>
         </SafeAreaView>
         
-        <SafeAreaView style={styles.bottomTextStart}>
+        <View style={styles.bottomTextStart}>
           {/*Change Household button link*/}
-          <Button
-            title="Change Household"
-            color="black"
-            onPress={() => this.props.navigation.navigate('Household Page')}
-          />
           <Changehouse/>
           {/*Sign out button*/}
           <Button
@@ -174,7 +167,7 @@ export class SettingsPage extends React.Component {
             title="Sign Out"
             
           ></Button>
-        </SafeAreaView>
+        </View>
       </ImageBackground>
     );
     
