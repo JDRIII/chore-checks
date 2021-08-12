@@ -29,7 +29,7 @@ function Changehouse({navigation}){
   return (
     <View style={{ alignItems: 'center', justifyContent: 'center' }}>
       <TouchableOpacity onPress={() => navigation.navigate('Household')}>
-        <Text style={{fontSize:20, fontFamily:"Montserrat_500medium"}}>Change Household</Text>
+        <Text style={{fontSize:20, fontFamily:"Montserrat_500medium", paddingBottom: "3%"}}>Change Household</Text>
               </TouchableOpacity>
     </View>
   )
