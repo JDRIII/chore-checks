@@ -1,13 +1,9 @@
 import React from 'react';
+import { StyleSheet, Text } from "react-native";
 
 function HouseholdSelectionPage(props) {
     return (
-        <ImageBackground
-            style={{flex:1}}
-            source={require("../assets/background-gradient.jpg")}
-        >
-
-        </ImageBackground>
+        <Text>Hi</Text>
     );
 }
 

@@ -142,7 +142,7 @@ export class SettingsPage extends React.Component {
           /> */}
 
           {/*Altered change household button to add custom font*/}
-          <TouchableOpacity onPress={() => Alert.alert("Button with adjusted color pressed")}>
+          <TouchableOpacity onPress={() => this.props.navigation.navigate("HouseholdSelection")}>
             <Text style={{ fontSize: 20, fontFamily: "Montserrat_500Medium" }}>Change Household</Text>
           </TouchableOpacity>
 
@@ -154,7 +154,7 @@ export class SettingsPage extends React.Component {
           ></Button> */}
 
           {/*Altered sign out button to add custom font*/}
-          <TouchableOpacity onPress={() => Alert.alert("Button with adjusted color pressed")}>
+          <TouchableOpacity onPress={() => alert("Button with adjusted color pressed")}>
             <Text style={{ color: "red", fontSize: 20, fontFamily: "Montserrat_500Medium", paddingTop: "5%" }}>Sign out</Text>
           </TouchableOpacity>
 

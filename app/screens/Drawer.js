@@ -17,6 +17,7 @@ import TasksPage from "./TasksPage";
 import { TasksPage2 } from "./TasksPage2"
 import ChatboxPage from "./ChatboxPage";
 import HouseholdPage from "./HouseholdPage";
+import HouseholdSelectionPage from "./HouseholdSelectionPage";
 import SettingsPage from "./SettingsPage";
 import CustomDrawer from "./CustomDrawer";
 
@@ -309,6 +310,7 @@ function SettingsNavigator() {
           },
         })}
       />
+      <SettingsStack.Screen name="HouseholdSelection" component={HouseholdSelectionPage}></SettingsStack.Screen>
     </SettingsStack.Navigator>
   );
 }
